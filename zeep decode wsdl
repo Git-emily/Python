@@ -2,7 +2,7 @@ from zeep import Client
 
 url = 'http://www.webxml.com.cn/WebServices/WeatherWebService.asmx?wsdl'
 client = Client(wsdl = url)
-
+#遍历节点和方法
 for service in client.wsdl.services.values():
     print('service_Name:',service.name)
     for port in service.ports.values():
@@ -12,3 +12,11 @@ for service in client.wsdl.services.values():
             print('input:',operation.input.signature())
             print('output:',operation.output.signature())
             print('****************')
+
+#单独调用有参数和无参数的方法：
+#有参
+for city in client.service.getSupportCity('上海'):
+    print(city)
+#无参
+for province in client.service.getSupportProvince():
+    print(province)
