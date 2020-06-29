@@ -1,0 +1,24 @@
+import time
+import datetime
+import calendar
+
+#time
+timeStamp = time.time() #系统当前时间戳
+time1 = time.localtime(timestamp) #将时间戳转化为当地时间
+time2 = time.strftime('%Y-%m-%d %H:%M:%S %p',time1) #转化为指定格式时间
+
+#datetime模块下有多个子模块：
+#datetime: 处理年月日，时分秒，微秒
+#date：处理年月日
+#time: 处理时分秒，微秒
+currTime = datetime.datetime.now() #返回当前时间2020-06-29 10:16:57.962287
+datetime1 = currTime.strftime('%x %X') #返回06/29/20 10:16:57
+timeStamp = currTime.timestamp()
+datetime2 = datetime.datetime(2020,6,29,10,22,30) # 返回2020-06-29 10:22:30
+
+time1 = datetime.date.today().year #返回2020
+time2 = datetime.date.today().year+1 #返回2021
+
+#calendar
+year = calendar.calendar(2020) #返回2020年的日历
+month = calendar.month(2020,6) #返回2020年6月的日历
