@@ -6,6 +6,12 @@ import calendar
 timeStamp = time.time() #系统当前时间戳
 time1 = time.localtime(timestamp) #将时间戳转化为当地时间
 time2 = time.strftime('%Y-%m-%d %H:%M:%S %p',time1) #转化为指定格式时间
+#############################
+#将time转化为timestamp:
+time1 = '2019-6-30 23:59:59' 
+timeArray = time.strptime(time1,'%Y-%m-%d %H:%M:%S')
+tstamp = time.mktime(timeArray)
+############################
 
 #datetime模块下有多个子模块：
 #datetime: 处理年月日，时分秒，微秒
