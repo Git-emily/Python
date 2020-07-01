@@ -1,0 +1,19 @@
+#Robert3T和Python在MongDB操作
+
+#3T查询
+db.getCollection('collection_name').find({}) #查询all
+
+  #条件查询的格式find({条件},{显示哪些字段}).sort({某字段排序}).limit(nums)
+  db.getCollection('collection_name').find({'_id':{'$gte':t1,'$lte':t2},'OAT':{'$exists':true}},{'OAT':1}).sort({'_id':-1}).limit(100) 
+          #查询_id在t1和t2之间，并且OAT的值存在;仅显示OAT列,按倒叙显示100条
+        
+#Python查询
+db['collection_name'].find({'OAT':{'$exists':true},'_id':{'$gte':t1}},{'_id':1,'OAT':1}).sort('_id',-1) #查询_id大于t1，OAT存在；按倒叙显示_id和OAT列的值
+
+#3T删除
+db.getCollection('collection_name').remove({'_id':{'$gte':t1}}) #删除_id大于t1的值，按行删除
+
+db.getCollection('collection_name').update({'_id':{'$gte':t1,'$lte':t2}},{'$unset':{'OAT':1}},false,true) #false和true分别代表upsert和multi #删除OAT列中_id在t1和t2之间的数 
+  #引申，如果要添加列，则为$set
+  
+  
