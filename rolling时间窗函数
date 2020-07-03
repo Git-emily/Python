@@ -1,0 +1,7 @@
+#针对DataFrame,同一列相邻数之间做差值
+import pandas as pd
+list1 = [1,2,3,4]
+list2 = [11,12,13,14]
+df = pd.DataFrame({'a':list1,'b':list2})
+
+df['a']=df['a'].rolling(window=2).apply(lambda x: x.max()-x.min())  #每两个数，用大数-小数；每两个窗口一移动
