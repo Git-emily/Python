@@ -1,0 +1,20 @@
+
+* XML和JSON：
+数据生成的不同方式；
+如以JSON格式的数据，在读取时采用Json的协议进行解析
+
+* HTTP和SOAP：
+两种不同的协议；Internet采用的都是HTTP协议；
+在搭建自己的Web Service时，可以选择SOAP协议（http+xml）：在HTTP协议的基础上，将被编写为XML的request参数，添加http，body提交到WS服务器上处理，再返回
+
+* WSDL：
+一种XML文档，说明了SOAP信息以及如何交换这些信息
+为了使Client和WS之间可以相互对应，使用WSDL作为SOAP通信方式的描述文件---目标服务的接口文档
+
+-----------------------------------------------------------------------------------------------------------------------------
+获取WDSL中定义的方法：即operation
+> WSDL中包含节点：主节点definition；包含节点：types(:element) message portType(:operation) binding(:operation) service(:port)
+> service节点相当于主入口，包含1/多个port，每个port对应不同的web服务(:如post，get，soap,soap12);port通过location将一个url赋予给一个特定的binding
+> binding和portType都定义operation的节点---一般而言从任何一个节点获取 结果都一样
+> PortType/binding相当于类接口名称；operation相当于接口中包含的函数；input,output 分别为传递到web服务和返回给客户的有效负载；message相当于函数中调用的参数和返回值
+***********参考文档：https://www.cnblogs.com/ZDPPU/p/5908043.html；https://stackoom.com/question/32Kkh/%E4%BD%BF%E7%94%A8Zeep%E8%A7%A3%E6%9E%90WSDL
