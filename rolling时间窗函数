@@ -5,3 +5,5 @@ list2 = [11,12,13,14]
 df = pd.DataFrame({'a':list1,'b':list2})
 
 df['a']=df['a'].rolling(window=2).apply(lambda x: x.max()-x.min())  #每两个数，用大数-小数；每两个窗口一移动
+#window可修改；x可修改 lambda x: x[1]-x[0]
+#rolling(center=True ) 如window=3：center默认为false，居右，即将当行的数作为窗口的最后值，即向上取2个值；center=true时，居中，即上下各取一个值
