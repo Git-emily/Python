@@ -1,0 +1,15 @@
+#1.获取目标excel的信息：
+demo_file = excelfile('文件path') demo_file.sheet_names()
+
+#向excel写入数据：
+
+#2.创建对象：
+writer = pd.ExcelWriter('path') #注意path：'C:\Users\.....\test.xlsx'
+#数据： 
+df1 = pd.DataFrame({'V1':[11,'No1'],'V2':[12,'No2'],'V3':[13,'No3']}) #注意，dataframe创建的二维数组，至少需要两行的数据
+
+#3.将pd1写入'path'中：
+df1.to_excel(writer,sheet_name ='sheet1')
+
+#4.切记保存！！！
+writer.save()
