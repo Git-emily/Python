@@ -1,0 +1,35 @@
+#1. python中函数可以当作普通变量传递给另一个参数,like:
+def one():
+  print（'I am one')
+  
+def two(func):
+  func()
+
+two(one) #其中函数one当作变量传递 并执行
+
+#2. @装饰器 可以使得已存在的函数在不修改的前提下增加其他的功能，常用于：插入日志，性能测试，事务处理，缓存，权限校验
+#函数无参数时
+
+#如现在需要打印运行的log
+
+def logging(func):
+  def wrapper():
+      #??logging.warn('%s is running'%func.__name__)
+      func()
+  return wrapper
+  
+@logging
+def one():
+  print('I am one')
+  
+#函数有参时，参考https://blog.csdn.net/u014745194/article/details/70158926
+def logging(func):
+  def wrapper(*args,**kw):  # '*args'为可变参数，接受的是tuple；'**kw'为关键字参数，接受的是dict
+      print('%s is running'%func.__name__)
+      func(*args,**kw)
+  return wrapper
+ 
+dic ={'city':Shanghai,'Job':'Engineer'} 
+def one(name,age,**dic):
+  print('name:',name,'age:',age,'other:',kw)
+  
