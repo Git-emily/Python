@@ -1,3 +1,4 @@
+参考LINK：https://foofish.net/python-decorator.html
 #1. python中函数可以当作普通变量传递给另一个参数,like:
 def one():
   print（'I am one')
