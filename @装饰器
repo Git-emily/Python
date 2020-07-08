@@ -1,4 +1,7 @@
-参考LINK：https://foofish.net/python-decorator.html
+#参考LINK：https://foofish.net/python-decorator.html;
+#https://www.flyml.net/2018/12/12/flask-logging-usage-demo/; 
+#https://blog.csdn.net/weixin_40576010/article/details/88639686
+#https://blog.csdn.net/mist99/article/details/80771289
 #1. python中函数可以当作普通变量传递给另一个参数,like:
 def one():
   print（'I am one')
