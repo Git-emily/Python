@@ -1,0 +1,28 @@
+#Python虚拟环境：创建隔绝的Python环境
+
+#安装
+pip install virtualenv
+
+#在某一目录下，创建一个虚拟环境CarrierGoEnv
+cd D:\Emily
+virtualenv venv
+
+#对于新建的虚拟环境，可指定python的解释器
+virtualenv -p /C:/Users/yange.UTCCGL/AppData/Local/Programs/Python/Python37/python.exe
+
+#使用虚拟环境前，需激活                           
+venv\Scripts\activate
+
+---------------------------------
+[#对于拷贝来虚拟环境，内含python解释器等],
+此例展示批处理
+@echo on
+pip install virtualenv
+virtualenv CarrierGoEnv                            
+cd CarrierGoEnv/Scripts
+call activate.bat
+cd ..
+cd ..
+pause
+pip install -r requirements.txt   #内含python各种包
+pause
