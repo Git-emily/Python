@@ -1,7 +1,9 @@
-#参考LINK：https://foofish.net/python-decorator.html;
-#https://www.flyml.net/2018/12/12/flask-logging-usage-demo/; 
-#https://blog.csdn.net/weixin_40576010/article/details/88639686
-#https://blog.csdn.net/mist99/article/details/80771289
+
+#参考装饰器LINK：https://foofish.net/python-decorator.html
+#装饰器：https://blog.csdn.net/weixin_40576010/article/details/88639686
+#Flask日志:https://www.flyml.net/2018/12/12/flask-logging-usage-demo/
+#Windows下部署Flask的Web服务：https://blog.csdn.net/mist99/article/details/80771289
+
 #1. python中函数可以当作普通变量传递给另一个参数,like:
 def one():
   print（'I am one')
@@ -37,3 +39,7 @@ dic ={'city':Shanghai,'Job':'Engineer'}
 def one(name,age,**dic):
   print('name:',name,'age:',age,'other:',kw)
   
+  #############################################################
+Flask中的装饰器作用
+
+#Python全栈 Web（基于Flask框架的完整项目、项目搭建）：https://juejin.im/entry/5bea4584e51d452f1f335cb5
