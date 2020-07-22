@@ -18,3 +18,19 @@ HTML, 用于显示数据】
 JS: 脚本语言
 Ajax: 基于JS语言，组合了JS, CSS, XML等技术，形成的新技术，用于web客户端和服务端动态交互，传递数据的网页开发技术
 JQuery: JS的框架。基于JS语言，集合Ajax技术开发出的JS库。封装了JS和Ajax的功能。提供函数接口
+
+#--------------------------------------------------------------------------
+#实例应用：
+ready()用于当前文档加载完后立刻执行函数。返回值为jQuery类型
+#其两种等价形式：Reference:https://blog.csdn.net/Thinkingcao/article/details/56486608
+$(document).ready(function(){....});
+$(function(){...});
+
+# $.ajax()传参的方式：http://www.webkaka.com/tutorial/js/2019/083065/
+function test(){
+  var name = 'Yang';
+  var name2 = 'Emily';
+  $.ajax({
+    ...//参考link
+  });
+}
