@@ -1,0 +1,34 @@
+#str.split() 不支持多个分隔符，不感知空格的数量>适合简单的分割
+>>>s = 'a b  c'
+>>>s.split('')
+['a','b','','c']
+
+#re.split() 支持正则和多个表达式分割
+mm = "abc aa;bb,cc | dd(xx).xxx 12.12'	xxxx"
+#区别使用'[]';'()';以及''
+>>>re.split(r'[;]',m)
+['abc aa', "bb,cc | dd(xx).xxx 12.12'\txxxx"]
+>>>re.split(r'(;)',m)
+['abc aa', ';', "bb,cc | dd(xx).xxx 12.12'\txxxx"]
+>>>re.split(r';',m)
+['abc aa', "bb,cc | dd(xx).xxx 12.12'\txxxx"]  #和[]效果相同，单字符而言
+
+#按照空格分
+>>>re.split(r' ',mm)
+['abc', 'aa;bb,cc', '|', 'dd(xx).xxx', "12.12'\txxxx"]
+
+#按照所有空白字符切割：\s([\t \n \r \f \v])
+>>>re.split('\s',mm)
+['abc', 'aa;bb,cc', '|', 'dd(xx).xxx', "12.12'", 'xxxx']
+
+#对于多字符匹配，注意'[]'和''的区别
+>>>re.split(r';,',mm)
+["abc aa;bb,cc | dd(xx).xxx 12.12'\txxxx"]
+
+>>>re.split(r,'[;,]',mm)
+['abc aa', 'bb', "cc | dd(xx).xxx 12.12'\txxxx"]
+
+#filter(函数，序列)：用于过滤序列，过滤掉不符合条件的元素。函数可以是lambda
+#将字符串temp用-分开，
+temp_1=filter(None,re.split(r'(?:-)',temp)) #'()'会保留分隔符，加上?: 可以去掉分隔符.返回list类型
+yaxis_title = '-'.join(list(set(temp_1))) #将字符串去重，并用-拼接成字符串
