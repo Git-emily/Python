@@ -10,6 +10,12 @@ db.getCollection('collection_name').find({}) #查询all
 #Python查询
 db['collection_name'].find({'OAT':{'$exists':true},'_id':{'$gte':t1}},{'_id':1,'OAT':1}).sort('_id',-1) #查询_id大于t1，OAT存在；按倒叙显示_id和OAT列的值
 
+#find()和find_one()区别：
+find_one() 返回的是一个对象（字典类型）；对find_one()返回的值，再套一层list(db[plant].find_one()),返回的则是列的名称.....
+        >>>list(dict)，返回的是字典的key值组成的列表list({'a':1,'b':2}),返回[a,b]
+find() 返回的是一个数组，数组里面是对象；
+
+
 #3T删除
 db.getCollection('collection_name').remove({'_id':{'$gte':t1}}) #删除_id大于t1的值，按行删除
 
