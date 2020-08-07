@@ -1,0 +1,7 @@
+#reference：https://www.cnblogs.com/zhoujie/p/mongo1.html
+
+db.collection_name.aggregate([
+  {$group:{...}},
+  {$match{...}}
+])
+
