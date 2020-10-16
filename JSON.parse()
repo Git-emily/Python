@@ -1,0 +1,6 @@
+#JSON解析出的Key值含有空格的处理方式：
+
+str= [{'id':1,'OAT Info':12}]
+#读取str数据
+id =  str.id
+OAT = str['OAT Info']
