@@ -1,0 +1,15 @@
+# Gmail_to_database.py 
+#https://blog.csdn.net/qm9090/article/details/90041396
+#https://blog.csdn.net/diyiday/article/details/81504363?
+utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.add_param_isCf&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.add_param_isCf
+
+Gmail:
+1）Gmail邮箱也需要手动配置pop或者imap功能。登录Gmail邮箱后点击“设置”-“转发和pop、smtp”-“pop下载”下勾选“对从现在起所收到的邮件启用pop”或者“IMAP访问”中勾选“启用IMAP”然后“保存更改”
+（2）服务器配置方法
+类型： POP3
+接收邮件服务器： pop.gmail.com
+接收端口： 995 SSL 是
+发送邮件服务器： smtp.gmail.com
+发送端口： 465 SSL 是
+（3）Gmail邮箱默认只pop一次，解决方法是。只要在用户名前加上一个recent：就可以
+了。例如：recent：oicqpp@gmail.com
