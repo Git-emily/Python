@@ -1,3 +1,4 @@
+#https://www.plus2net.com/python/pandas-dataframe-sum.php
 #对DataFrame进行列/行的求和
 import pandas as pd
 test  = {'Name':['AA','BB','CC','DD','EE','FF'],'ID':[1,2,3,4,5,6],'Math':[50,60,70,80,90,100],'English':[80,90,80,70,100,70]}
