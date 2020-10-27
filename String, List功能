@@ -1,0 +1,18 @@
+#String 取子字符串
+str = 'Energy_Waste 1_2'
+sub_str = str[-3:]
+print(sub_str)
+>>>1_2
+
+#list去重,https://blog.csdn.net/Jerry_1126/article/details/79843751
+lst = [2,1,3,1,2]
+lst1 = list(set(lst))
+print(lst1)
+>>>[1, 2, 3]
+
+
+#list删除，https://www.cnblogs.com/xiaodai0/p/10564956.html
+lang = ["Python", "C++", "Java", "PHP", "Ruby", "MATLAB"]
+del lang[2]
+print(lang)
+>>> ['Python', 'C++', 'PHP', 'Ruby', 'MATLAB']
