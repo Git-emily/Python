@@ -29,3 +29,35 @@ print(pd.sum(axis = 1)) #按照行进行求和
 3    154
 4    195
 5    176
+
+
+#DataFrame多列排序  https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sort_values.html
+data.sort_values(....)
+eg:
+import pandas as pd
+import numpy as np
+df = pd.DataFrame({
+    'col1': ['A', 'A', 'B', np.nan, 'D', 'C'],
+    'col2': [2, 1, 9, 8, 7, 4],
+    'col3': [0, 1, 9, 4, 2, 3],
+    'col4': ['a', 'B', 'c', 'D', 'e', 'F']
+})
+print(df.sort_values(by=['col1']))
+>>>  col1  col2  col3 col4
+0    A     2     0    a
+1    A     1     1    B
+2    B     9     9    c
+5    C     4     3    F
+4    D     7     2    e
+3  NaN     8     4    D
+
+df.sort_values(by=['col1', 'col2'])
+>>> col1  col2  col3 col4
+1    A     1     1    B
+0    A     2     0    a
+2    B     9     9    c
+5    C     4     3    F
+4    D     7     2    e
+3  NaN     8     4    D
+
+.....
