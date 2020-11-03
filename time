@@ -2,6 +2,9 @@ import time
 import datetime
 import calendar
 
+#返回当天日期凌晨的时间戳
+date = time.mktime(datetime.time.today().timetuple())
+
 #time
 timeStamp = time.time() #系统当前时间戳
 time1 = time.localtime(timestamp) #将时间戳转化为当地时间
