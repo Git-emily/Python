@@ -32,20 +32,23 @@ e1 = time.time()
 print(Plan_A)
 print('A_time:',e1 -s1)
 ############
+#法2:https://stackoverflow.com/questions/2298870/get-names-of-all-keys-in-the-collection ; https://docs.mongodb.com/manual/reference/operator/aggregation/unwind/
 s2 = time.time()
 if Plant == 'plant_Changi Airport Terminal 4_plt1':
     cursor = DB[Plant].aggregate([
             {'$match': {'_id': {'$ne': 'info','$gte': 1604418720}}},
-            {"$project": {"arrayofkeyvalue": {"$objectToArray": "$$ROOT"}}},
-            {"$unwind": "$arrayofkeyvalue"},
-            {"$group": {"_id": '', "allkeys": {"$addToSet": "$arrayofkeyvalue.k"}}}
+            {"$project": {"arrayofkeyvalue": {"$objectToArray": "$$ROOT"}}},    # 1. "$$ROOT" for referencing the top level document; 2. '$objectToArray'将top key-value转化为document array
+            {"$unwind": "$arrayofkeyvalue"},                                    #{ $unwind: <field path> } 将array进行拆分，最终为dict的形式，具体参考文档
+            {"$group": {"_id": '', "allkeys": {"$addToSet": "$arrayofkeyvalue.k"}}}  # 以_id 作为聚合条件，dict的key值去重添加到‘allkeys’中，即{‘allkeys’:[key1,key2....]}
         ])
-    result = cursor.next()
+    result = cursor.next()  #return the next document in a cursor.
     result = result.get('allkeys')
 print(result)
 e2 = time.time()
 print('B_time:', e2 - s2)
+
 ##########################
+法3：
 s3 = time.time()
 if Plant == 'plant_Changi Airport Terminal 4_plt1':
     Plan_B =  DB[Plant].find({'_id': {'$type': 1, '$gte': 1604418720}})
