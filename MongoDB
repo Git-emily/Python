@@ -23,3 +23,37 @@ db.getCollection('collection_name').update({'_id':{'$gte':t1,'$lte':t2}},{'$unse
   #引申，如果要添加列，则为$set
   
   
+#pymongo 查询列名的三种方式：
+#法1
+s1 = time.time()
+if Plant == 'plant_Changi Airport Terminal 4_plt1':
+    Plan_A = list(DB[Plant].find_one({'_id': {'$type': 1, '$gte': 1604418720}}))
+e1 = time.time()
+print(Plan_A)
+print('A_time:',e1 -s1)
+############
+s2 = time.time()
+if Plant == 'plant_Changi Airport Terminal 4_plt1':
+    cursor = DB[Plant].aggregate([
+            {'$match': {'_id': {'$ne': 'info','$gte': 1604418720}}},
+            {"$project": {"arrayofkeyvalue": {"$objectToArray": "$$ROOT"}}},
+            {"$unwind": "$arrayofkeyvalue"},
+            {"$group": {"_id": '', "allkeys": {"$addToSet": "$arrayofkeyvalue.k"}}}
+        ])
+    result = cursor.next()
+    result = result.get('allkeys')
+print(result)
+e2 = time.time()
+print('B_time:', e2 - s2)
+##########################
+s3 = time.time()
+if Plant == 'plant_Changi Airport Terminal 4_plt1':
+    Plan_B =  DB[Plant].find({'_id': {'$type': 1, '$gte': 1604418720}})
+    list1 = []
+    for i in Plan_B:
+        list1.extend(i.keys())
+    list1 = list(set(list1))
+    print(list1)
+e3 = time.time()
+print('C_time:', e3 - s3)
+        #     test End
