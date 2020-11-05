@@ -99,7 +99,7 @@ print(ts_5d_rightclosed_rightlable)
 Freq: 5D, dtype: int32
 
 ###################################
-ffill():
+ffill():https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.core.resample.Resampler.fillna.html
 s = pd.Series([1, 2, 3],index=pd.date_range('20180101', periods=3, freq='min'))
 print(s)
 >>>
