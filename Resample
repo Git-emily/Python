@@ -1,3 +1,25 @@
+#自动生成数据：
+import pandas as pd
+index = pd.date_range(end='11/6/2020 13:00:10',freq='T',periods = 10)
+data = pd.Series(range(1,11),index = index )
+print(data)
+>>>
+2020-11-06 12:51:10     1
+2020-11-06 12:52:10     2
+2020-11-06 12:53:10     3
+2020-11-06 12:54:10     4
+2020-11-06 12:55:10     5
+2020-11-06 12:56:10     6
+2020-11-06 12:57:10     7
+2020-11-06 12:58:10     8
+2020-11-06 12:59:10     9
+2020-11-06 13:00:10    10
+Freq: T, dtype: int64
+
+
+#https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html
+#https://www.bbsmax.com/A/mo5kg0ov5w/
+#https://www.cnblogs.com/jinqier/p/9280813.html
 # resample():重采样
 
 resample(rule,how=None,axis=0,fill_method=None,closed=None,label=None,convention='start',kind=None,loffset=None,base=0,on=None,level=None)
@@ -121,7 +143,7 @@ print(data)
 2018-01-01 00:02:00    3
 Freq: 15S, dtype: int64
 ----------------------
-🐖🐖🐖🐖降采样
+🐖🐖🐖🐖降采样1
 data1 = data.resample('13s').ffill()
 print(data1)
 >>>
@@ -137,6 +159,28 @@ print(data1)
 2018-01-01 00:01:57    2
 Freq: 13S, dtype: int64
 ###################################
+
+🐖🐖🐖🐖降采样2
+import pandas as pd
+index = pd.date_range(end='11/6/2020 13:00:10',freq='T',periods = 1)
+data = pd.Series(range(1),index = index )
+print(data)
+>>>
+2020-11-06 13:00:10    0
+Freq: T, dtype: int64
+
+( ఠൠఠ )ﾉ注意区别
+re_data = data.resample('1min',closed = 'right').ffill()
+print(re_data)
+>>>
+2020-11-06 13:01:00    0
+Freq: T, dtype: int64
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+re_data1 = data.resample('1min').ffill() #default, closed='left'
+print(re_data1)
+>>>
+2020-11-06 13:00:00   NaN
+Freq: T, dtype: float64
 ----------------------------------------
 Exaple2(升采样):
 
