@@ -21,7 +21,9 @@ db.getCollection('collection_name').remove({'_id':{'$gte':t1}}) #删除_id大于
 
 db.getCollection('collection_name').update({'_id':{'$gte':t1,'$lte':t2}},{'$unset':{'OAT':1}},false,true) #false和true分别代表upsert和multi #删除OAT列中_id在t1和t2之间的数 
   #引申，如果要添加列，则为$set
-  
+ 
+#3T更新
+db.getCollection('collection_name').update({'_id':{'$gte':t1,'$lte':t2}},{'$set':{'lastRunTime':0}},false,true) #false和true分别代表upsert和multi
   
 #pymongo 查询列名的三种方式：
 #法1
