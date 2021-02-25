@@ -5,3 +5,6 @@ db.collection_name.aggregate([
   {$match{...}}
 ])
 
+----------------------------------------------------------
+db.getCollection('report_plant_emily_HN1592_plt1').aggregate([{$group:{_id:{StartTime:'$StartTime',EndTime:'$EndTime'}, count:{$sum:1}, dups:{$addToSet: '$_id'}}},
+{$match:{count:{$gt:1}}}]).forEach(function(doc){doc.dups.shift();db.getCollection('report_plant_HN1592_plt1').remove({_id: {$in: doc.dups}});})
