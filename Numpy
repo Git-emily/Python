@@ -1,6 +1,14 @@
 #numpy+scipy+matplotlib = Matlab
 import numpy as np
 
+#创建矩阵
+a = np.arange(12)
+a = a.reshape(4,3)
+>>>array([[ 0, 1, 2],
+ [ 3, 4, 5],
+ [ 6, 7, 8],
+ [ 9, 10, 11]])
+
 #对角矩阵
 eye = np.eye(4)
 
@@ -77,3 +85,6 @@ x=np.ones(shape=(100,200,3))#白色图像，rgb[1,1,1]
 x=np.zeros(shape=(100,200,3))#黑色色图像，rgb[0,0,0]
 x=np.full(shape=(100,200,3),fill_value=148)#rgb[255,255,255]
 plt.imshow(x)
+
+
+
