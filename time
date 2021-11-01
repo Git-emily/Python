@@ -35,3 +35,5 @@ month = calendar.month(2020,6) #返回2020年6月的日历
 # 获取昨天的日期
 tod_date = datetime.date.today()
 pre_date = tod_date - datetiem.timedelta(days=1)
+# 日期增加时间，即为该日期的零时
+pre_date = datetime.datetime.strptime(str(pre_date),'%Y-%m-%d')
