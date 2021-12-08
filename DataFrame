@@ -61,3 +61,10 @@ df.sort_values(by=['col1', 'col2'])
 3  NaN     8     4    D
 
 .....
+
+
+
+Dataframe 获取行列值,函数包括：loc和iloc
+1. loc只能用index和column索引名
+2. iloc只能用数字索引
+If 行是数字索引，列是索引名，选用df['colunm_name'].loc[0] #先列后行
