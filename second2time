@@ -1,0 +1,12 @@
+def sec2time(sec):
+    if hasattr(sec,'__len__'):
+        return [sec2time(s) for s in sec]
+    m,s = divmod(sec,60) # return (sec/60, sec%60)
+    h,m = divmod(m,60)
+    pattern = r'%02d:%02d:%02d' # set format, the width=2 , add 0 if missing and align at right
+    return pattern %(h,m,s)
+
+
+if __name__ == '__main__':
+    time = sec2time(sec = 34538)
+    print(time)
