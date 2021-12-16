@@ -1,0 +1,25 @@
+NaN: 不是数字，但是Number类型
+NaN和任何值都不想等，包括自身 
+>>>NaN !== NaN
+True
+
+isNaN(): NaN = Not a Number
+isNaN()  NaN 和String 为True
+
+>>>print(isNaN('1'))
+False
+因为是数字
+
+>>>print(isNaN('2020/12'))
+True
+
+Number.isNaN(): 在isNaN()的基础上 筛选出Number类型的值
+>>>print(Number.isNaN(NaN))
+True
+
+>>>print(Number.isNaN('NaN'))
+False
+
+>>>print(Number.isNaN(1))
+False
+
