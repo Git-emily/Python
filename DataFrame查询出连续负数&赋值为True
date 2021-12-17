@@ -12,7 +12,7 @@ Date        Time        fvc  pef  fev1  fev1_fvc  fev6  fev25_75  fvc_changes
 
 Question:
 通过fvc_changes列 检查其值是否小于-10
-如果连续遇到2个负值（小于-10），则它将在附加到同一数据框的新列中打印“EXACERBATION”
+如果连续遇到2个负值（小于-10），则将其选择出来
 
 df['exacer'] = df.groupby(level = 0)['fvc_changes'].transform(lambda x: x.tail(1)< -10)  #分类后，tail(1) 最后一个值小于-10
 df['exacer'] = df.groupby(df['exacer'].astype('int').diff().abs().cumsum())['exacer'].apply(lambda x: x.cumsum() >1)
@@ -21,5 +21,14 @@ df['repo_exacer'] = (df['exacer'] == 'False') & (df['exacer'].shift(-1) == True)
 如选择连续的4个负值，在将全部符合条件的值赋为True时，可以采用选出index后，减去3，再筛选df[index-3,index]
 
 -------------------------
-该函数将仅评估任何给定日期的fvc_changes最终值，即，如果一个日期具有两个fvc_changes，则它将仅评估fvc_changes的第二个值
+Question2:
+通过fvc_changes列 检查其值是否小于-10
+如果连续遇到4个负值（小于-10），则将其选择出来.
 
+注意：若仅评估任何给定日期的fvc_changes最终值，即，如果一个日期具有两个fvc_changes，则它将仅评估fvc_changes的第二个值
+故，最后4行具有负值，但它们仅跨越2天，不应计算在内
+
+df['exacer'] = df.groupby(level = 0)['fvc_changes'].transform(lambda x: x.tail(1)< -10)
+df2 = df.reset_index().drop_duplicates('Date', keep = 'last')
+df2['exacer'] = df2.groupby(df2['exacer'].astype('int').diff().abs().cumsum())['exacer'].apply(lambda x: x.cumsum() > 3)
+df['repo_exacer'] = (df['exacer'] == True)
